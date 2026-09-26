@@ -12,6 +12,7 @@ Aquí dejo el material que necesitas para las prácticas: la plantilla base con 
 |---|---|
 | [`plantilla/`](plantilla/) | Plantilla base de Bootstrap para todas las prácticas, un ejemplo completo y la chuleta de clases |
 | [`tema03_plantilla/`](tema03_plantilla/) | Tema 3 · El lenguaje de programación de clientes: plantilla de la tarea (página, JavaScript y README para rellenar) |
+| [`tema04_plantilla/`](tema04_plantilla/) | Tema 4 · Operadores del lenguaje y bucles: plantilla básica de la tarea (casillas, zona de resultado, funciones de ayuda y README para rellenar) |
 
 Iré añadiendo una carpeta `temaNN_plantilla` por cada tarea a medida que avancemos.
 

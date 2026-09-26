@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Cambia [Tu nombre] por tu nombre -->
+  <title>Calculadora y bucles · [Tu nombre]</title>
+
+  <!-- CSS de Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Iconos de Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!--
+    PLANTILLA DE LA TAREA 4
+    · Solo trae lo imprescindible para empezar. La maquetación con Bootstrap es cosa tuya y cuenta en la nota:
+      rejilla (row y col-*) que se adapte al móvil, cards, botones con color, grupos de botones, iconos...
+    · Todo lo que va entre [corchetes] es un hueco: sustitúyelo por lo tuyo.
+    · Tu JavaScript va en js/app.js. El archivo js/ayudas.js NO se toca.
+  -->
+
+  <!-- NAVBAR con tu nombre -->
+  <nav class="navbar bg-primary" data-bs-theme="dark">
+    <div class="container">
+      <span class="navbar-brand"><i class="bi bi-person-circle"></i> [Tu nombre y apellidos]</span>
+      <span class="navbar-text">Tarea 4 · DWEC</span>
+    </div>
+  </nav>
+
+  <!-- CABECERA -->
+  <header class="bg-body-tertiary border-bottom py-4 mb-4">
+    <div class="container">
+      <h1 class="h2 mb-1">Calculadora y bucles</h1>
+      <p class="lead mb-0 text-body-secondary">[Una frase tuya sobre lo que hace la página]</p>
+    </div>
+  </header>
+
+  <main class="container mb-5">
+
+    <!-- TODO: organiza las cards con la rejilla de Bootstrap: <div class="row"> y dentro <div class="col-12 col-lg-...">.
+               En el móvil, una debajo de otra; en pantalla grande, repartidas en columnas. -->
+
+    <!-- LOS NÚMEROS. No cambies los id: leerNumero("numero1") y leerNumero("numero2") los buscan por su id -->
+    <section class="card mb-4">
+      <div class="card-header">Los números</div>
+      <div class="card-body">
+        <label for="numero1" class="form-label">Número 1</label>
+        <input type="number" id="numero1" class="form-control mb-3">
+        <label for="numero2" class="form-label">Número 2</label>
+        <input type="number" id="numero2" class="form-control">
+      </div>
+    </section>
+
+    <!-- RESULTADO. Aquí escriben mostrar(), anadirLinea() y anadirBadge(). No cambies el id -->
+    <section class="card mb-4">
+      <div class="card-header">Resultado</div>
+      <div class="card-body">
+        <div id="salida"></div>
+      </div>
+    </section>
+
+    <!-- EJERCICIO 1 · Calculadora -->
+    <section class="card mb-4">
+      <div class="card-header">Calculadora</div>
+      <div class="card-body">
+        <!-- Cada botón llama con onclick a su función de js/app.js, como en la tarea 3 -->
+        <button type="button" class="btn btn-primary" onclick="sumar()">Sumar</button>
+        <!-- TODO: los botones Restar, Multiplicar, Dividir, Potencia y Módulo:
+                   restar(), multiplicar(), dividir(), potencia() y modulo() -->
+      </div>
+    </section>
+
+    <!-- TODO EJERCICIO 2 · Comparaciones: una card con los botones
+               «¿Cuál es mayor?» → cualEsMayor()     «¿Par o impar?» → parOImpar() -->
+
+    <!-- TODO EJERCICIOS 3 Y 4 · Bucles: una card con dos grupos de botones (btn-group)
+               Con texto:  for → bucleFor()    while → bucleWhile()    do…while → bucleDoWhile()
+               Con badges: for → badgesFor()   while → badgesWhile()   do…while → badgesDoWhile() -->
+
+  </main>
+
+  <footer class="bg-body-tertiary border-top py-3">
+    <div class="container small text-body-secondary">
+      [Tu nombre y apellidos] · DWEC 26/27 · Tarea 4 · Las capturas, la reflexión y las fuentes están en el README.
+    </div>
+  </footer>
+
+  <!-- JS de Bootstrap, las funciones de ayuda y, después, tu JavaScript. Este orden importa -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/ayudas.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
