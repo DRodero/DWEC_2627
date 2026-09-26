@@ -2,7 +2,7 @@
 
 Repositorio del módulo **Desarrollo Web en Entorno Cliente (DWEC)** de 2.º de Desarrollo de Aplicaciones Web (DAW) en Davante, curso 2026-27.
 
-Aquí dejo el material que usamos en clase: la plantilla con la que empiezan todas las prácticas y las resoluciones y ejemplos de cada tema. Los enunciados de las tareas y las entregas van siempre por el campus virtual.
+Aquí dejo el material que necesitas para las prácticas: la plantilla base con la que empiezan todas y la plantilla de cada tarea. Los enunciados de las tareas y las entregas van siempre por el campus virtual.
 
 **Profesor:** Diego Rodero Pulido · diego.rodero@davante.es
 
@@ -11,9 +11,9 @@ Aquí dejo el material que usamos en clase: la plantilla con la que empiezan tod
 | Carpeta | Contenido |
 |---|---|
 | [`plantilla/`](plantilla/) | Plantilla base de Bootstrap para todas las prácticas, un ejemplo completo y la chuleta de clases |
-| [`tema02/`](tema02/) | Tema 2 · Lenguajes y herramientas de programación en clientes web: resolución de la tarea |
+| [`tema03_plantilla/`](tema03_plantilla/) | Tema 3 · El lenguaje de programación de clientes: plantilla de la tarea (página, JavaScript y README para rellenar) |
 
-Iré añadiendo una carpeta `temaNN` por cada tema a medida que avancemos.
+Iré añadiendo una carpeta `temaNN_plantilla` por cada tarea a medida que avancemos.
 
 ## Cómo usarlo
 
@@ -47,7 +47,7 @@ Iré añadiendo una carpeta `temaNN` por cada tema a medida que avancemos.
 ## Cómo se entregan las prácticas
 
 1. Crea **tu propio repositorio público** para la asignatura, con una carpeta por tema: `tema02`, `tema03`…
-2. Cada práctica parte de la [plantilla base](plantilla/plantilla-base.html) y se maqueta con Bootstrap. Nada de HTML sin estilos.
+2. Cada práctica parte de la [plantilla base](plantilla/plantilla-base.html), o de la plantilla del tema cuando la haya (`temaNN_plantilla`), y se maqueta con Bootstrap. Nada de HTML sin estilos.
 3. Sube el trabajo en **varios commits** a medida que avances, con mensajes que digan qué cambia.
 4. Dentro de la carpeta, un `README.md` que explique lo que has hecho, con **capturas hechas en tu equipo** y las fuentes que hayas consultado.
 5. En la tarea del campus entregas solo la **URL de la carpeta** (`https://github.com/tu-usuario/tu-repositorio/tree/main/temaNN`). Se corrige el último commit anterior a la fecha límite.
