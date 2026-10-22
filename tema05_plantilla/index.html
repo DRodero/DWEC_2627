@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Cambia [Tu nombre] por tu nombre -->
+  <title>Manipular el DOM · [Tu nombre]</title>
+
+  <!-- CSS de Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Iconos de Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Tu JavaScript. Con defer, espera a que se lea todo el HTML antes de ejecutarse: no lo quites -->
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+  <!--
+    PLANTILLA DE LA TAREA 5
+    · Esta vez el HTML ya está hecho: es la página que vas a manipular desde js/app.js.
+    · No cambies los id ni las clases que usa el JavaScript (#contenido, #primero, .segundo, #nuevoTexto...).
+      Si quieres mejorar el aspecto con Bootstrap, adelante, pero manteniéndolos.
+    · Todo lo que va entre [corchetes] es un hueco: sustitúyelo por lo tuyo.
+  -->
+
+  <!-- NAVBAR con tu nombre -->
+  <nav class="navbar bg-primary" data-bs-theme="dark">
+    <div class="container">
+      <span class="navbar-brand"><i class="bi bi-person-circle"></i> [Tu nombre y apellidos]</span>
+      <span class="navbar-text">Tarea 5 · DWEC</span>
+    </div>
+  </nav>
+
+  <!-- CABECERA -->
+  <header class="bg-body-tertiary border-bottom py-4 mb-4">
+    <div class="container">
+      <h1 class="h2 mb-1">Manipular el DOM</h1>
+      <p class="lead mb-0 text-body-secondary">Seleccionar, cambiar, crear y borrar elementos de la página con JavaScript.</p>
+    </div>
+  </header>
+
+  <main class="container mb-5">
+
+    <!-- FILA 1: los párrafos y los ejercicios 1 a 4, que trabajan sobre ellos -->
+    <div class="row g-4 mb-4">
+
+      <div class="col-12 col-lg-5">
+        <section class="card shadow-sm border-primary sticky-lg-top">
+          <div class="card-header"><i class="bi bi-file-text"></i> El contenido <code>#contenido</code></div>
+          <div class="card-body">
+            <div id="contenido">
+              <p id="primero">Primer párrafo de ejemplo.</p>
+              <p class="segundo">Segundo párrafo de ejemplo.</p>
+              <p>Tercer párrafo de ejemplo.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-12 col-lg-7">
+
+        <!-- EJERCICIO 1 -->
+        <section class="card shadow-sm mb-4">
+          <div class="card-header d-flex align-items-center gap-2">
+            <span class="badge text-bg-primary">1</span> Selectores y modificación
+          </div>
+          <div class="card-body">
+            <p class="small text-body-secondary">Cambia el texto del primer párrafo, resalta el segundo y pone el tercero en rojo.</p>
+            <button type="button" class="btn btn-primary" onclick="aplicarCambios()">
+              <i class="bi bi-magic"></i> Aplicar cambios
+            </button>
+          </div>
+        </section>
+
+        <!-- EJERCICIO 2 -->
+        <section class="card shadow-sm mb-4">
+          <div class="card-header d-flex align-items-center gap-2">
+            <span class="badge text-bg-primary">2</span> Crear y eliminar nodos
+          </div>
+          <div class="card-body">
+            <div class="d-flex flex-wrap gap-2">
+              <button type="button" class="btn btn-success" onclick="anadirParrafo()">
+                <i class="bi bi-plus-lg"></i> Añadir párrafo
+              </button>
+              <button type="button" class="btn btn-danger" onclick="eliminarUltimo()">
+                <i class="bi bi-trash"></i> Eliminar último párrafo
+              </button>
+            </div>
+            <p id="aviso2" class="text-danger small mt-2 mb-0 d-none">No quedan párrafos que eliminar.</p>
+          </div>
+        </section>
+
+        <!-- EJERCICIO 3 -->
+        <section class="card shadow-sm mb-4">
+          <div class="card-header d-flex align-items-center gap-2">
+            <span class="badge text-bg-primary">3</span> Resaltar al pasar el ratón
+          </div>
+          <div class="card-body">
+            <p class="small text-body-secondary">Después, pasa el ratón por los párrafos. Si añades párrafos nuevos, vuelve a pulsar: los nuevos aún no tienen el evento.</p>
+            <button type="button" class="btn btn-info" onclick="activarResaltado()">
+              <i class="bi bi-cursor"></i> Activar resaltado
+            </button>
+          </div>
+        </section>
+
+        <!-- EJERCICIO 4 -->
+        <section class="card shadow-sm">
+          <div class="card-header d-flex align-items-center gap-2">
+            <span class="badge text-bg-primary">4</span> Cambiar el primer párrafo
+          </div>
+          <div class="card-body">
+            <label for="nuevoTexto" class="form-label">Nuevo texto para el primer párrafo</label>
+            <input type="text" id="nuevoTexto" class="form-control mb-2" placeholder="Escribe aquí…">
+            <div class="d-flex flex-wrap gap-2">
+              <button type="button" class="btn btn-primary" onclick="cambiarTexto()">
+                <i class="bi bi-fonts"></i> Cambiar texto
+              </button>
+              <button type="button" class="btn btn-outline-danger" onclick="cambiarConHtml()">
+                <i class="bi bi-exclamation-triangle"></i> Probar con innerHTML
+              </button>
+            </div>
+            <div id="error4" class="alert alert-danger small mt-2 mb-0 d-none" role="alert">El campo está vacío.</div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- FILA 2: la lista de tareas y los datos de la ventana -->
+    <div class="row g-4">
+
+      <!-- EJERCICIO 5 -->
+      <div class="col-12 col-lg-7">
+        <section class="card shadow-sm h-100">
+          <div class="card-header d-flex align-items-center gap-2">
+            <span class="badge text-bg-primary">5</span> Lista de tareas
+            <span class="ms-auto small">Tareas: <span id="totalTareas" class="badge text-bg-secondary">0</span></span>
+          </div>
+          <div class="card-body">
+            <label for="tareaInput" class="form-label">Nueva tarea</label>
+            <div class="input-group mb-2">
+              <input type="text" id="tareaInput" class="form-control" placeholder="Por ejemplo, repasar los selectores">
+              <button type="button" class="btn btn-success" onclick="anadirTarea()"><i class="bi bi-plus-lg"></i> Añadir</button>
+            </div>
+            <button type="button" class="btn btn-warning btn-sm mb-3" onclick="borrarCompletadas()">
+              <i class="bi bi-check2-all"></i> Borrar completadas
+            </button>
+            <p id="error5" class="text-danger small d-none"></p>
+            <ul id="listaTareas" class="list-group"></ul>
+          </div>
+        </section>
+      </div>
+
+      <!-- EJERCICIO 6 -->
+      <div class="col-12 col-lg-5">
+        <section class="card shadow-sm h-100">
+          <div class="card-header d-flex align-items-center gap-2">
+            <span class="badge text-bg-primary">6</span> Datos de la ventana (BOM)
+          </div>
+          <div class="card-body">
+            <button type="button" class="btn btn-primary mb-3" onclick="verDatosVentana()">
+              <i class="bi bi-window"></i> Ver datos
+            </button>
+            <table class="table table-sm align-middle mb-0">
+              <tbody>
+                <tr><th scope="row">Ventana</th><td id="datoVentana">—</td></tr>
+                <tr><th scope="row">Punto de corte</th><td id="datoPunto">—</td></tr>
+                <tr><th scope="row">Pantalla</th><td id="datoPantalla">—</td></tr>
+                <tr><th scope="row">URL</th><td id="datoUrl" class="text-break">—</td></tr>
+                <tr><th scope="row">Idioma</th><td id="datoIdioma">—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-body-tertiary border-top py-3">
+    <div class="container small text-body-secondary">
+      [Tu nombre y apellidos] · DWEC 26/27 · Tarea 5 · Las capturas, la reflexión y las fuentes están en el README.
+    </div>
+  </footer>
+
+  <!-- JS de Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
