@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Cambia [Tu nombre] por tu nombre -->
+  <title>Objetos y arrays · [Tu nombre]</title>
+
+  <!-- CSS de Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Iconos de Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Tu JavaScript. Con defer, espera a que se lea todo el HTML antes de ejecutarse: no lo quites -->
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+  <!--
+    PLANTILLA DE LA TAREA 6
+    · El HTML ya está hecho: seis tarjetas, una por ejercicio. Tu trabajo está en js/app.js.
+    · No cambies los id que usa el JavaScript (#salida1, #listaColores, #tablaProductos, #notas...)
+      ni el onclick de los botones. Si quieres mejorar el aspecto con Bootstrap, adelante, pero manteniéndolos.
+    · Todo lo que va entre [corchetes] es un hueco: sustitúyelo por lo tuyo.
+  -->
+
+  <!-- NAVBAR con tu nombre -->
+  <nav class="navbar bg-primary" data-bs-theme="dark">
+    <div class="container">
+      <span class="navbar-brand"><i class="bi bi-person-circle"></i> [Tu nombre y apellidos]</span>
+      <span class="navbar-text">Tarea 6 · DWEC</span>
+    </div>
+  </nav>
+
+  <!-- CABECERA -->
+  <header class="bg-body-tertiary border-bottom py-4 mb-4">
+    <div class="container">
+      <h1 class="h2 mb-1">Objetos y arrays</h1>
+      <p class="lead mb-0 text-body-secondary">Crear objetos con sus métodos y trabajar con listas: añadir, sacar, ordenar, filtrar, buscar y transformar.</p>
+    </div>
+  </header>
+
+  <main class="container mb-5">
+    <div class="row g-4">
+
+      <!-- EJERCICIO 1 -->
+      <div class="col-12 col-lg-6">
+        <section class="card h-100 shadow-sm">
+          <div class="card-header d-flex align-items-center gap-2">
+            <span class="badge text-bg-primary">1</span> Ficha de estudiante
+          </div>
+          <div class="card-body">
+            <p class="small text-body-secondary">Un objeto con cuatro propiedades y un método, <code>presentarse()</code>.</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <button type="button" class="btn btn-primary" onclick="verFicha()"><i class="bi bi-person-vcard"></i> Ver ficha</button>
+              <button type="button" class="btn btn-outline-primary" onclick="cumplirAnios()"><i class="bi bi-cake2"></i> Cumplir años</button>
+              <button type="button" class="btn btn-outline-danger" onclick="quitarCurso()"><i class="bi bi-eraser"></i> Quitar el curso</button>
+            </div>
+            <div id="salida1"></div>
+          </div>
+        </section>
+      </div>
+
+      <!-- EJERCICIO 2 -->
+      <div class="col-12 col-lg-6">
+        <section class="card h-100 shadow-sm">
+          <div class="card-header d-flex align-items-center gap-2">
+            <span class="badge text-bg-primary">2</span> Colores
+            <span class="ms-auto small">Colores: <span id="totalColores" class="badge text-bg-secondary">0</span></span>
+          </div>
+          <div class="card-body">
+            <div class="input-group mb-2">
+              <input type="text" id="color" class="form-control" placeholder="Por ejemplo, amarillo">
+              <button type="button" class="btn btn-success" onclick="anadirColor()"><i class="bi bi-plus-lg"></i> Añadir</button>
+            </div>
+            <div class="d-flex flex-wrap gap-2 mb-2">
+              <button type="button" class="btn btn-outline-danger btn-sm" onclick="quitarUltimo()">Quitar el último</button>
+              <button type="button" class="btn btn-outline-danger btn-sm" onclick="quitarPrimero()">Quitar el primero</button>
+            </div>
+            <p id="aviso2" class="text-danger small mb-2 d-none"></p>
+            <ol id="listaColores" class="list-group list-group-numbered"></ol>
+          </div>
+        </section>
+      </div>
+
+      <!-- EJERCICIO 3 -->
+      <div class="col-12 col-lg-6">
+        <section class="card h-100 shadow-sm">
+          <div class="card-header d-flex align-items-center gap-2">
+            <span class="badge text-bg-primary">3</span> Catálogo de productos
+          </div>
+          <div class="card-body">
+            <div class="d-flex flex-wrap gap-2 mb-2">
+              <button type="button" class="btn btn-primary btn-sm" onclick="mostrarProductos()">Todos</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="ordenarPorPrecio()"><i class="bi bi-sort-numeric-down"></i> Ordenar por precio</button>
+              <button type="button" class="btn btn-warning btn-sm" onclick="filtrarCaros()"><i class="bi bi-funnel"></i> Más de 50 €</button>
+            </div>
+            <div class="input-group input-group-sm mb-2">
+              <input type="text" id="buscarProducto" class="form-control" placeholder="Busca por nombre, por ejemplo «ratón»">
+              <button type="button" class="btn btn-outline-primary" onclick="buscarProducto()"><i class="bi bi-search"></i> Buscar</button>
+            </div>
+            <p id="mensaje3" class="small text-body-secondary mb-2"></p>
+            <div class="table-responsive">
+              <table class="table table-sm table-striped align-middle mb-0">
+                <thead class="table-primary">
+                  <tr><th scope="col">Producto</th><th scope="col">Categoría</th><th scope="col" class="text-end">Precio</th></tr>
+                </thead>
+                <tbody id="tablaProductos"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- EJERCICIO 4 -->
+      <div class="col-12 col-lg-6">
+        <section class="card h-100 shadow-sm">
+          <div class="card-header d-flex align-items-center gap-2">
+            <span class="badge text-bg-primary">4</span> Notas
+          </div>
+          <div class="card-body">
+            <label for="nota" class="form-label">Nueva nota (de 0 a 10)</label>
+            <div class="input-group mb-2">
+              <input type="number" id="nota" class="form-control" min="0" max="10" step="0.25" placeholder="Por ejemplo, 7.5">
+              <button type="button" class="btn btn-success" onclick="anadirNota()"><i class="bi bi-plus-lg"></i> Añadir nota</button>
+              <button type="button" class="btn btn-outline-secondary" onclick="borrarNotas()"><i class="bi bi-trash"></i> Borrar</button>
+            </div>
+            <p id="error4" class="text-danger small mb-2 d-none"></p>
+            <div id="notas" class="mb-2"></div>
+            <p id="media" class="fw-semibold mb-0"></p>
+          </div>
+        </section>
+      </div>
+
+      <!-- EJERCICIO 5 -->
+      <div class="col-12 col-lg-6">
+        <section class="card h-100 shadow-sm">
+          <div class="card-header d-flex align-items-center gap-2">
+            <span class="badge text-bg-primary">5</span> map, filter y reduce
+          </div>
+          <div class="card-body">
+            <p class="small mb-2">Con <code>const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];</code></p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <button type="button" class="btn btn-success btn-sm" onclick="verDobles()">Doble (map)</button>
+              <button type="button" class="btn btn-warning btn-sm" onclick="verPares()">Pares (filter)</button>
+              <button type="button" class="btn btn-info btn-sm" onclick="verSuma()">Suma (reduce)</button>
+              <button type="button" class="btn btn-dark btn-sm" onclick="verCadena()">Los tres seguidos</button>
+            </div>
+            <div id="salida5" class="bg-body-tertiary border rounded p-2 small font-monospace">Pulsa un botón para ver el resultado.</div>
+          </div>
+        </section>
+      </div>
+
+      <!-- EJERCICIO 6 -->
+      <div class="col-12 col-lg-6">
+        <section class="card h-100 shadow-sm">
+          <div class="card-header d-flex align-items-center gap-2">
+            <span class="badge text-bg-primary">6</span> Ciudades: slice, splice y búsqueda
+          </div>
+          <div class="card-body">
+            <div id="ciudades" class="mb-2"></div>
+            <div class="d-flex flex-wrap gap-2 mb-2">
+              <button type="button" class="btn btn-primary btn-sm" onclick="verSlice()">slice(2, 5)</button>
+              <button type="button" class="btn btn-danger btn-sm" onclick="hacerSplice()">splice(2, 2)</button>
+              <button type="button" class="btn btn-outline-secondary btn-sm" onclick="restaurarCiudades()"><i class="bi bi-arrow-counterclockwise"></i> Restaurar</button>
+            </div>
+            <div class="input-group input-group-sm mb-2">
+              <input type="text" id="buscarCiudad" class="form-control" placeholder="Nombre exacto, por ejemplo «Jaén»">
+              <button type="button" class="btn btn-outline-primary" onclick="buscarCiudad()"><i class="bi bi-search"></i> Buscar</button>
+            </div>
+            <div id="salida6" class="bg-body-tertiary border rounded p-2 small font-monospace">Pulsa un botón para ver el resultado.</div>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-body-tertiary border-top py-3">
+    <div class="container small text-body-secondary">
+      [Tu nombre y apellidos] · DWEC 26/27 · Tarea 6 · Las capturas, la reflexión y las fuentes están en el README.
+    </div>
+  </footer>
+
+  <!-- JS de Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
